@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLLIST</title>
+    <link rel="stylesheet" href="member.css">
+    <link rel="stylesheet" href="news.css"> <!-- 뉴스 스타일을 위한 CSS 파일 -->
+    <style>
+        /* 로고 스타일 추가 */
+        .logo {
+            height: 50px; /* 로고 이미지 높이 */
+            margin-right: 20px; /* 오른쪽 여백 */
+        }
+
+        /* 네비게이션 바 스타일 수정 */
+        .nav {
+            display: flex; /* 네비게이션 바를 플렉스 박스로 설정 */
+            align-items: center; /* 수직 중앙 정렬 */
+            background-color: #313131; /* 배경 색상 */
+            padding: 15px; /* 패딩 추가 */
+        }
+
+        /* 햄버거 아이콘 스타일 */
+        .hamburger {
+            display: none; /* 기본적으로 숨김 */
+            flex-direction: column; /* 세로로 정렬 */
+            cursor: pointer; /* 클릭 가능 표시 */
+            margin-left: auto; /* 오른쪽 정렬 */
+        }
+
+        /* 로고와 네비게이션 리스트를 감싸는 컨테이너 */
+        .nav-container {
+            display: flex;
+            align-items: center; /* 수직 중앙 정렬 */
+            width: 100%; /* 전체 너비 사용 */
+        }
+
+        /* 네비게이션 리스트 스타일 */
+        .nav-list {
+            display: flex; /* 리스트를 플렉스 박스로 설정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            padding: 0;
+            list-style: none; /* 리스트 스타일 제거 */
+        }
+
+        .nav-item {
+            margin: 0 15px; /* 리스트 아이템 간 여백 */
+        }
+
+        .nav-link {
+            color: #dfdfdf; /* 링크 색상 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        /* 뉴스 섹션 스타일 */
+        .news-container {
+            display: flex; /* 플렉스 박스 사용 */
+            flex-direction: column; /* 세로 방향으로 정렬 */
+            align-items: center; /* 수평 중앙 정렬 */
+            padding: 20px; /* 뉴스 섹션 패딩 */
+            margin-top: 20px; /* 상단 여백 */
+        }
+
+        .news-item {
+            width: 100%; /* 전체 너비 사용 */
+            max-width: 1000px; /* 최대 너비 설정 */
+            margin-bottom: 20px; /* 뉴스 아이템 간 여백 */
+            border: 1px solid #ccc; /* 테두리 */
+            border-radius: 5px; /* 모서리 둥글게 */
+            overflow: hidden; /* 내용이 넘칠 때 숨김 */
+        }
+
+        .news-image {
+            width: 100%; /* 이미지 너비 100% */
+            height: auto; /* 높이는 자동 조정 */
+        }
+
+        .news-content {
+            padding: 15px; /* 내용 패딩 */
+        }
+
+        .news-title {
+            font-size: 20px; /* 제목 크기 */
+            margin-bottom: 10px; /* 제목과 내용 간 여백 */
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none; /* 기본적으로 숨김 */
+                flex-direction: column; /* 세로 정렬 */
+                position: absolute; /* 위치 조정 */
+                background-color: #313131; /* 배경 색상 */
+                right: 0; /* 오른쪽 정렬 */
+                top: 60px; /* 네비게이션 아래 위치 */
+                width: 200px; /* 너비 설정 */
+                z-index: 1; /* 위에 표시 */
+            }
+
+            .nav-list.active {
+                display: flex; /* 활성화 시 표시 */
+            }
+
+            .hamburger {
+                display: flex; /* 화면이 작아지면 햄버거 표시 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <img src="logo.png" alt="Logo" class="logo"> <!-- 로고 이미지 추가 -->
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item"><a href="member.html" class="nav-link">MEMBER</a></li>
+                <li class="nav-item"><a href="album.html" class="nav-link">ALBUM</a></li>
+                <li class="nav-item"><a href="video.html" class="nav-link">VIDEO</a></li>
+                <li class="nav-item"><a href="news.html" class="nav-link">NEWS</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <img src="햄버거바.png" alt="Hamburger Menu" style="height: 25px; width: 25px;"> <!-- 햄버거 아이콘 이미지 -->
+            </div>
+        </nav>
+    </header>
+
+    <!-- 뉴스 섹션 -->
+    <div class="news-container">
+        <div class="news-item">
+            <img src="멜론.jpg" alt="News Image 1" class="news-image"> <!-- 뉴스 이미지 -->
+            <div class="news-content">
+                <h2 class="news-title">플레이브, 멜론 '빌리언스 클럽' 입성..."역대 최단 기록"</h2>
+                <p>"플레이브"가 국내 최대 음원 플랫폼 멜론(Melon) "빌리언스 클럽"에 역대 최단 기록으로 이름을 올렸다.
+                    소속사 블래스트에 따르면, 플레이브는 전날 전체 발매 곡 기준 10억362만 스트리밍을 달성하며 멜론의 "멜론의 전당" 빌리언스 클럽에 입성했다.
+                </p>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="멜론2.jpg" alt="News Image 2" class="news-image"> <!-- 뉴스 이미지 -->
+            <div class="news-content">
+                <h2 class="news-title">멜론 상반기 주요 키워드, 플레이브·비비·에스파·아일릿</h2>
+                <p>"멜론의 전당" 밀리언스 앨범 부문에선 버추얼 아이돌의 새 역사를 쓰고 있는 플레이브의 활약이 돋보였다. 
+                    플레이브의 "ASTERUM : 134-1" 상반기 밀리언스 앨범 중 가장 높은 스트리밍을 기록한 앨범으로 등극했다. 
+                    이 가운데 타이틀 곡 "WAY 4 LUV"는 총 1.04억회로 가장 높은 스트리밍을 기록했다.</p>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="멜론3.jpg" alt="News Image 1" class="news-image"> <!-- 뉴스 이미지 -->
+            <div class="news-content">
+                <h2 class="news-title">가상 아이돌 지상파 음방 1위 새역사···"플레이브" 흥행질주</h2>
+                <p>"버추얼 아이돌 그룹" 플레이브가 음악방송 1위에 등극하며 새 역사를 썼다. 
+                    지난 9일 방송된 MBC "쇼! 음악중심"에서 플레이브의 신곡 "WAY 4 LUV"가 사전투표와 실시간 투표 모두 만점을 기록하며 1위에 등극했다. 
+                    국내 지상파 음악 방송에서 버추얼 아이돌이 1위를 한 최초의 사례로, 이례적인 압도적인 성적으로 모든 음악 팬들의 이목을 집중시켰다.
+                </p>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="멜론4.jpg" alt="News Image 1" class="news-image"> <!-- 뉴스 이미지 -->
+            <div class="news-content">
+                <h2 class="news-title">마니아 문화 넘어 K-POP 새 주역으로…"버추얼 아이돌"</h2>
+                <p>지난 2일 태국 방콕에서 열린 제33회 서울가요대상에서 33년 역사상 처음으로 버추얼 아이돌 "플레이브"가 뉴웨이브스타상을 수상을 했습니다. 
+                    이번 상이 갖는 의미는 기존의 마이너 시장에 있던 버추얼 아이돌이 K-POP 주류 시장으로 진입됐다라는 의미와 함께 이 가상의 캐릭터지만 실제 가수로 인정을 받았다라는 의미로도 해석이 됩니다.
+                </p>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="멜론5.jpg" alt="News Image 1" class="news-image"> <!-- 뉴스 이미지 -->
+            <div class="news-content">
+                <h2 class="news-title">K팝 시장의 새로운 시대를 열다…"버추얼 아이돌" 화제!</h2>
+                <p>플레이브의 인기는 데뷔 초반 반짝 관심에 그치지 않고 탄탄한 팬덤 형성으로 진화하고 있다. 
+                    한터차트에 따르면, 최근 발매한 앨범 은 직전 앨범 판매량 대비 6배 이상인 약 20만 장을 판매하며 9월 4주 차 음반 차트 1위에 올랐다. 
+                    또한, 제33회 서울가요대상 신인상 부문 투표에서 팬들의 압도적인 기세로 최종득표 1위에 랭크됐다.
+                </p>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="멜론6.jpg" alt="News Image 1" class="news-image"> <!-- 뉴스 이미지 -->
+            <div class="news-content">
+                <h2 class="news-title">"버추얼 아이돌" 플레이브, 초동 20만 장 돌파…탄탄한 팬덤</h2>
+                <p>최근 한터차트에 따르면 버추얼 아이돌 그룹 플레이브의 미니 1집이 초동(앨범 발매일 기준 일주일 판매량) 판매량 20만 장을 돌파했다. 
+                    이는 데뷔 앨범 초동 판매량(약 2만 7천 장) 기준 7배 이상 상승한 성과다.
+                </p>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="멜론7.jpg" alt="News Image 1" class="news-image"> <!-- 뉴스 이미지 -->
+            <div class="news-content">
+                <h2 class="news-title">내가 AI 아이돌에 빠질 줄이야, 플레이브는 팬덤 확장 중</h2>
+                <p>뮤직비디오 조회수가 320만에 달하고, 첫 영상통화 팬 이벤트에 35개국 팬이 몰린 신인 남자 아이돌. 
+                    지난 3월 데뷔한 그룹 "플레이브"다. 
+                    기존 아이돌과 차이점은 AI 신기술로 구현한 가상인간, 즉 버추얼 아이돌이라는 것. 
+                    멤버는 예준, 노아, 밤비, 은호, 하민 5명이다. 
+                    움직임과 목소리까지 다 "만들어진 것"은 아니고, 실제 사람이 실시간 렌더링 기술을 활용해 3D 캐릭터 옷을 입고 활동하는 신개념 아이돌이다.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="video.js"></script>
+    <script>
+        // 햄버거 메뉴 클릭 시 네비게이션 리스트 토글
+        const hamburger = document.getElementById('hamburger');
+        const navList = document.getElementById('nav-list');
+
+        hamburger.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

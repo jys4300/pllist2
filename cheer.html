@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLLIST</title>
+    <link rel="stylesheet" href="cheer.css">
+    <style>
+        /* 로고 스타일 추가 */
+        .logo {
+            height: 50px; /* 로고 이미지 높이 */
+            margin-right: 20px; /* 오른쪽 여백 */
+        }
+
+        /* 네비게이션 바 스타일 수정 */
+        .nav {
+            display: flex; /* 네비게이션 바를 플렉스 박스로 설정 */
+            align-items: center; /* 수직 중앙 정렬 */
+            background-color: #313131; /* 배경 색상 */
+            padding: 15px; /* 패딩 추가 */
+        }
+
+        /* 네비게이션 리스트 스타일 */
+        .nav-list {
+            display: flex; /* 리스트를 플렉스 박스로 설정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            padding: 0;
+            list-style: none; /* 리스트 스타일 제거 */
+        }
+
+        .nav-item {
+            margin: 0 15px; /* 리스트 아이템 간 여백 */
+        }
+
+        .nav-link {
+            color: #dfdfdf; /* 링크 색상 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+        
+        /* 응원 메시지 모달 스타일 */
+        .modal {
+            display: none; /* 기본적으로 숨김 */
+            position: fixed; /* 고정 위치 */
+            top: 50%; /* 화면 중앙 */
+            left: 50%; /* 화면 중앙 */
+            transform: translate(-50%, -50%); /* 중앙 정렬 */
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1002; /* 버튼 위에 표시 */
+            padding: 20px;
+            width: 300px; /* 너비 설정 */
+        }
+
+        /* 모달 배경 */
+        .modal-backdrop {
+            display: none; /* 기본적으로 숨김 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+            z-index: 1001; /* 모달보다 아래에 표시 */
+        }
+
+        /* 모달 내부 스타일 */
+        .modal textarea {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px; /* 아래 여백 */
+        }
+
+        .modal button {
+            background-color: #313131; /* 버튼 색상 */
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px; /* 모서리 둥글게 */
+            width: 100%; /* 버튼 너비 100% */
+        }
+
+        .modal button:hover {
+            background-color: #585858; /* 호버 시 색상 변화 */
+        }
+
+        /* 메시지 컨테이너 스타일 */
+        #messagesContainer {
+            margin: 100px 20px 20px; /* 여백 설정 (상단 여백을 더 줌) */
+            padding: 20px;
+            background-color: white; /* 배경 색상 */
+            border-radius: 5px; /* 모서리 둥글게 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+            overflow-y: auto; /* 세로 스크롤 가능 */
+            max-height: calc(100vh - 160px); /* 화면 높이에 맞춰 제한 */
+        }
+    </style>
+</head>
+<body>
+   
+    <header>
+        <nav class="nav">
+            <a href="main.html"><img src="logo.png" alt="Logo" class="logo"></a> <!-- 로고 클릭 시 main 페이지로 이동 -->
+            <ul class="nav-list">
+                <li class="nav-item"><a href="member.html" class="nav-link">MEMBER</a></li>
+                <li class="nav-item"><a href="album.html" class="nav-link">ALBUM</a></li>
+                <li class="nav-item"><a href="video.html" class="nav-link">VIDEO</a></li>
+                <li class="nav-item"><a href="cheer.html" class="nav-link">CHEER</a></li>
+            </ul>
+        </nav>
+        <button id="addButton">Add</button> <!-- Add 버튼 추가 -->
+    </header>
+
+    <div class="modal-backdrop" id="modalBackdrop"></div> <!-- 모달 배경 -->
+    
+    <div class="modal" id="messageModal">
+        <h3>응원 메시지 작성</h3>
+        <textarea id="messageInput" placeholder="응원 메시지를 입력하세요..."></textarea>
+        <button id="submitButton">완료</button>
+        <button id="closeButton">닫기</button>
+    </div>
+
+    <div id="messagesContainer" style="display: none; margin: 20px; padding: 20px; background-color: white; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+        <!-- 입력된 메시지가 여기에 표시됩니다. -->
+    </div>
+
+    <script src="cheer.js"></script>
+</body>
+</html>

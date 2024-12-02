@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLLIST</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 로고 스타일 추가 */
+        .logo {
+            height: 50px; /* 로고 이미지 높이 */
+            margin-right: 20px; /* 오른쪽 여백 */
+        }
+
+        /* 네비게이션 바 스타일 수정 */
+        .nav {
+            display: flex; /* 네비게이션 바를 플렉스 박스로 설정 */
+            align-items: center; /* 수직 중앙 정렬 */
+            background-color: #313131; /* 배경 색상 */
+            padding: 15px; /* 패딩 추가 */
+        }
+
+        /* 햄버거 아이콘 스타일 */
+        .hamburger {
+            display: none; /* 기본적으로 숨김 */
+            flex-direction: column; /* 세로로 정렬 */
+            cursor: pointer; /* 클릭 가능 표시 */
+            margin-left: auto; /* 오른쪽 정렬 */
+        }
+
+        /* 로고와 네비게이션 리스트를 감싸는 컨테이너 */
+        .nav-container {
+            display: flex;
+            align-items: center; /* 수직 중앙 정렬 */
+            width: 100%; /* 전체 너비 사용 */
+        }
+
+        /* 네비게이션 리스트 스타일 */
+        .nav-list {
+            display: flex; /* 리스트를 플렉스 박스로 설정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            padding: 0;
+            list-style: none; /* 리스트 스타일 제거 */
+        }
+
+        .nav-item {
+            margin: 0 15px; /* 리스트 아이템 간 여백 */
+        }
+
+        .nav-link {
+            color: #dfdfdf; /* 링크 색상 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none; /* 기본적으로 숨김 */
+                flex-direction: column; /* 세로 정렬 */
+                position: absolute; /* 위치 조정 */
+                background-color: #313131; /* 배경 색상 */
+                right: 0; /* 오른쪽 정렬 */
+                top: 60px; /* 네비게이션 아래 위치 */
+                width: 200px; /* 너비 설정 */
+                z-index: 1; /* 위에 표시 */
+            }
+
+            .nav-list.active {
+                display: flex; /* 활성화 시 표시 */
+            }
+
+            .hamburger {
+                display: flex; /* 화면이 작아지면 햄버거 표시 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 배경 동영상 -->
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="plave_intro.mp4" type="video/mp4">
+        <source src="plave_intro.mp4" type="video/webm">
+    </video>
+    
+    <header>
+        <nav class="nav">
+            <img src="logo.png" alt="Logo" class="logo"> <!-- 로고 이미지 추가 -->
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item"><a href="member.html" class="nav-link">MEMBER</a></li>
+                <li class="nav-item"><a href="album.html" class="nav-link">ALBUM</a></li>
+                <li class="nav-item"><a href="video.html" class="nav-link">VIDEO</a></li>
+                <li class="nav-item"><a href="news.html" class="nav-link">NEWS</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <img src="햄버거바.png" alt="Hamburger Menu" style="height: 25px; width: 25px;"> <!-- 햄버거 아이콘 이미지 -->
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        // 햄버거 메뉴 클릭 시 네비게이션 리스트 토글
+        const hamburger = document.getElementById('hamburger');
+        const navList = document.getElementById('nav-list');
+
+        hamburger.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

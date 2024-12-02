@@ -1,0 +1,136 @@
+/* 기본 설정 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* 배경 동영상 스타일 */
+.background-video {
+    position: fixed; /* 화면에 고정 */
+    top: 60px; /* 상단바 아래에서 시작하도록 수정 */
+    left: 0;
+    width: 100%; /* 화면 너비에 맞춤 */
+    height: calc(100vh - 60px); /* 화면 높이에서 상단바 높이를 뺀 크기 */
+    object-fit: cover; /* 비율 유지하며 화면 채우기 */
+    z-index: -1; /* 콘텐츠 뒤로 배경 설정 */
+    pointer-events: none; /* 동영상 클릭 비활성화 */
+}
+
+/* 반응형에서 동영상 크기 조정 */
+@media (max-width: 768px) {
+    .background-video {
+        height: 100vh; /* 화면 높이를 100%로 설정하여 동영상이 화면을 꽉 채우도록 */
+        width: 100%; /* 화면 너비에 맞춤 */
+    }
+}
+
+@media (max-width: 480px) {
+    .background-video {
+        height: 100vh; /* 화면 높이를 100%로 설정하여 동영상이 화면을 꽉 채우도록 */
+        width: 100%; /* 화면 너비에 맞춤 */
+    }
+}
+
+/* 네비게이션 */
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #313131;
+    z-index: 1000;
+    padding: 20px 0; /* 위아래 너비 증가 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out; /* 부드러운 전환 */
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition: all 0.3s ease-in-out; /* 부드러운 전환 */
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    color: #dfdfdf;
+    text-decoration: none;
+    font-size: 20px; /* 폰트 크기를 20px로 설정 */
+    transition: opacity 0.3s ease-in-out; /* 부드럽게 글씨 숨기기 */
+}
+
+/* 비디오 컨테이너 스타일 */
+.video-container {
+    display: flex;
+    flex-wrap: wrap; /* 여러 줄로 나누어 표시 */
+    justify-content: center; /* 중앙 정렬 */
+    margin-top: 80px; /* 상단바 아래 공간 추가 (값 증가) */
+    padding: 100px; /* 비디오 섹션 여백 */
+}
+
+.video-item {
+    margin: 10px; /* 비디오 아이템 간 여백 */
+    position: relative; /* 자식 요소의 절대 위치 설정을 위해 */
+}
+
+.video-frame {
+    width: 300px; /* 비디오 너비 */
+    height: 200px; /* 비디오 높이 */
+}
+
+.thumbnail {
+    width: 300px; /* 썸네일 너비 */
+    height: 200px; /* 썸네일 높이 */
+    cursor: pointer; /* 마우스 커서 변경 */
+}
+
+
+/* 슬라이더 */
+.menu-container {
+    display: flex;
+    align-items: center;
+    height: 80vh;
+    position: relative;
+}
+
+.menu-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    transition: left 0.5s ease-in-out;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .nav-list {
+        justify-content: center;
+    }
+    .nav-link {
+        opacity: 0; /* 글씨 숨김 */
+        pointer-events: none; /* 클릭 비활성화 */
+    }
+}
+
+@media (max-width: 480px) {
+    .nav {
+        padding: 10px 0; /* 모바일에서 조금 더 좁게 */
+    }
+}
